@@ -99,3 +99,31 @@ SELECT * FROM PARTICIPATED ORDER BY DAMAGE_AMOUNT DESC;
 SELECT NAME FROM PERSON A, PARTICIPATED B WHERE A.DRIVER_ID = B.DRIVER_ID AND DAMAGE_AMOUNT>(SELECT AVG(DAMAGE_AMOUNT) FROM PARTICIPATED);
 
 
+UPDATE participated
+SET damage_amount = 25000
+WHERE reg_num = 'KA053408' AND report_num = 12;
+
+
+
+delete from accident where report_num=16;
+select * from accident;
+INSERT INTO accident VALUES (16, '2008-03-15', 'Domlur');
+select * from car order by year asc;
+SELECT COUNT(DISTINCT p.report_num) AS CNT
+FROM car c, participated p
+WHERE c.reg_num = p.reg_num
+  AND c.model = 'Lancer';
+SELECT COUNT(DISTINCT a.driver_id) AS CNT
+FROM participated a, accident b
+WHERE a.report_num = b.report_num
+  AND b.accident_date LIKE '2008%';
+
+SELECT * FROM PARTICIPATED ORDER BY DAMAGE_AMOUNT DESC;
+SELECT AVG(DAMAGE_AMOUNT) FROM PARTICIPATED;
+
+
+select * from participated;
+
+SELECT NAME FROM PERSON A, PARTICIPATED B WHERE A.DRIVER_ID = B.DRIVER_ID
+AND DAMAGE_AMOUNT>(SELECT AVG(DAMAGE_AMOUNT) FROM PARTICIPATED);
+SELECT MAX(DAMAGE_AMOUNT) FROM PARTICIPATED;
